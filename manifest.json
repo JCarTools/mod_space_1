@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "Animated System Rain",
+  "version": "1.0",
+  "description": "A minimal animated rain background in system colors.",
+  "action": {
+    "default_popup": "index.html"
+  }
+}

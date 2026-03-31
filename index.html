@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jetour - Pure Aero Performance</title>
+    <style>
+        body, html { margin: 0; padding: 0; background: #000; overflow: hidden; }
+        
+        canvas { 
+            display: block; 
+            filter: contrast(1.8) saturate(1.8) brightness(1.1); 
+            position: absolute; top: 0; left: 0; z-index: 1; 
+        }
+
+        /* Dynamic Speed Fog - Linked to GPS */
+        .fog-layer {
+            position: absolute; top: 0; width: 65%; height: 100%;
+            pointer-events: none; z-index: 10; mix-blend-mode: screen;
+            transition: opacity 0.2s ease-out;
+        }
+        #fog-left { left: 0; background: linear-gradient(to right, rgba(0, 255, 230, 0.6), rgba(0, 150, 200, 0.1), transparent); }
+        #fog-right { right: 0; background: linear-gradient(to left, rgba(0, 255, 230, 0.6), rgba(0, 150, 200, 0.1), transparent); }
+
+        #car-container {
+            position: absolute; bottom: 8%; left: 50%;
+            transform: translateX(-50%); width: 235px; 
+            z-index: 20; pointer-events: none;
+        }
+        #car-img { 
+            width: 100%; 
+            /* Intense Turquoise Underglow */
+            filter: drop-shadow(0 20px 50px rgba(0,0,0,1)) drop-shadow(0 0 40px rgba(0, 255, 230, 1)); 
+        }
+
+        #hud-frame {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('7Q.png'); background-size: 100% 100%;
+            pointer-events: none; z-index: 40;
+            filter: grayscale(1) brightness(2.8) contrast(2); /* Polished Titanium */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="hud-frame"></div>
+    <div id="fog-left" class="fog-layer"></div>
+    <div id="fog-right" class="fog-layer"></div>
+    
+    <div id="car-container"><img src="car.png" id="car-img"></div>
+    <canvas id="c"></canvas>
+
+    <script src="app.js"></script>
+</body>
+</html>
